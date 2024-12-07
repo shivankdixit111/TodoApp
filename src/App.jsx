@@ -41,46 +41,52 @@ const App = () => {
 
   return (
     <TodoProvider value={{todos, addTodo, updateTodo, deleteTodo, toggleComplete}}>
-       <Modal
-        isOpen={!isAuthenticated}
-        contentLabel="Authentication Modal"
-        style={{
-          overlay: {
-            backgroundColor: "rgba(0, 0, 0, 0.7)",
-          },
-          content: {
-            margin: "auto",
-            width: "500px",
-            height: "350px",
-            backgroundColor: "#1c2c4a",
-            color: "#fff",
-            borderRadius: "15px",
-            boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.3)",
-            border: "none",
-            padding: "20px",
-          },
-        }}
-      >
-        <div className="modal-header">
-          <h2 className='text-center' style={{ color: "#61dafb", fontSize: "1.8rem", marginBottom: "10px" }}>
-            Welcome to Todo App! ,,
-          </h2>
-        </div>
-        <p className="modal-text" style={{ marginBottom: "20px", fontSize: "1.1rem" }}>
-            <p className='text-center font-bold'> Stay organized and productive.</p>
-            <p className='text-center font-bold'>Please log in or sign up to access your tasks.</p>
-        </p>
-        <div className="modal-buttons mt-20">
-        <div className="flex flex-col space-y-4">
-            <button
-              className="w-5/6 py-2 mx-auto text-lg font-bold text-[#61dafb] border-2 border-[#61dafb] rounded-lg hover:bg-[#61dafb] hover:text-[#1c2c4a] transition duration-300"
-              onClick={()=> loginWithRedirect()}
-            >
-              Login
-            </button> 
-          </div>
-        </div>
-      </Modal> 
+      <Modal
+         isOpen={!isAuthenticated}
+         contentLabel="Authentication Modal"
+         style={{
+            overlay: {
+               backgroundColor: "rgba(0, 0, 0, 0.7)",
+            },
+            content: {
+               inset: "0", // Full-screen placement for mobile friendliness
+               display: "flex",
+               justifyContent: "center",
+               alignItems: "center",
+               padding: "0", // Remove default padding for Tailwind styling
+               backgroundColor: "transparent", // Use Tailwind for background color
+               border: "none",
+            },
+         }}
+         >
+         <div className="bg-[#1c2c4a] w-[90%] sm:w-[400px] max-w-[500px] h-[300px] p-6 sm:p-8 rounded-xl text-center shadow-lg">
+            {/* Modal Header */}
+            <div className="modal-header">
+               <h2 className="text-[#61dafb] text-xl sm:text-2xl font-semibold mb-4">
+               Welcome to Todo App!
+               </h2>
+            </div>
+            {/* Modal Text */}
+            <div className="modal-text mb-6">
+               <p className="text-gray-300 text-sm sm:text-base font-medium mb-2">
+               Stay organized and productive.
+               </p>
+               <p className="text-gray-300 text-sm sm:text-base font-medium">
+               Please log in or sign up to access your tasks.
+               </p>
+            </div>
+            {/* Modal Buttons */}
+            <div className="modal-buttons">
+               <button
+               className="w-full py-1.5 mx-auto text-lg font-bold mt-8 text-[#61dafb] border-2 border-[#61dafb] rounded-lg hover:bg-[#61dafb] hover:text-[#1c2c4a] transition duration-300"
+               onClick={()=> loginWithRedirect()}
+               >
+               Login
+               </button> 
+            </div>
+         </div>
+     </Modal>
+
 
       <div className="bg-[#172842] min-h-screen py-8">
         <div className="w-full max-w-2xl mx-auto shadow-md rounded-lg px-4 py-3 text-white">
